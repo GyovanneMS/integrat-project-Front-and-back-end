@@ -1,0 +1,42 @@
+main{
+    padding: 98px 96px;
+    height: 86vh;
+    display: flex;
+    align-items: center;
+}
+
+.fixed{
+    width: 50%;
+    gap: 20px;
+    display: flex;
+}
+
+.title{
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+h1{
+    font-weight: 300;
+    padding-left: 100px;
+    font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 57.38px;
+    word-break: break-word;
+    padding-bottom: 90px;
+}
+
+.main-img{
+    height: 450px;
+}
+
+.studant{
+    height: 650px;
+}
+
+mark{
+    background-color: white;
+    color: #3347B0;
+    font-weight: 700;
+    padding-right: 200px;
+}

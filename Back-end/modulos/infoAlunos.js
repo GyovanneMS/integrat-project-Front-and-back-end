@@ -726,7 +726,7 @@ const infoUmAluno = function(nomeAluno){
 
     if(aluno != ''){
         alunos.forEach(itemA =>{
-            if(itemA.nome.toLowerCase().includes(aluno.toLowerCase())){
+            if(itemA.matricula == aluno){
                 itemA.curso.forEach(itemB => {
                         itemB.disciplinas.forEach(Element => {
                         diciplinaAluno.push({Nome : Element.nome, Nota: Element.media, Status: Element.status});
