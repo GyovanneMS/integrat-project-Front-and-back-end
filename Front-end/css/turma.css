@@ -5,7 +5,20 @@ main{
 nav{
     display: flex;
     align-items: center;
+    height: 50px;
     justify-content: space-around;
+    background-color: #BCC2E5;;
+}
+
+.status{
+    border: none;
+    background-color: #BCC2E5;
+    color: #3347B0;
+}
+
+.legenda{
+    display: flex;
+    gap: 10px;
 }
 
 .blue{
@@ -14,4 +27,51 @@ nav{
 
 .yellow{
     color: #E5B657;
+} 
+
+.years{
+    border: none;
+    background-color: #BCC2E5;
+    color: #3347B0;
+}
+
+main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1{
+    color: #3347B0;
+}
+
+.alunos{
+    height: 300px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 50px;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 20px;
+    color: white;
+}
+
+.cursando{
+    background-color: #3347B0;
+}
+.finalizado{
+    background-color: #E5B657;
+}
+.sem-inforacao{
+    background-color: green;
+}
+
+.alunos img{
+    height: 40%;
+}
+
+.alunos p{
+    display: flex;
+    text-align: center;
 }
