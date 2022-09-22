@@ -6,8 +6,10 @@ const cardCursos = (object) => {
     const cursos = object;
     let card = document.createElement('a');
     card.classList.add('card')
-    card.href = './pages/turma.html'
+    card.setAttribute("id", `${cursos.Sigla}`)
     card.innerHTML = `<img src="${cursos.Icone}" alt=""> <span>${cursos.Sigla}</span>`;
+    card.onclick = abrir
+    card.href = './pages/turma.html'
     return card
 }
 
@@ -17,5 +19,12 @@ const showCards = async () => {
     cursos.replaceChildren(...cardsShow)
 }
 
+const abrir = (card) => {
+    const nomeCurso = card.currentTarget.id
+    console.log(nomeCurso)
+    localStorage.setItem('registration', nomeCurso)
+}
 
 showCards()
+
+

@@ -702,7 +702,7 @@ const infoAlunos = function(nomeCurso){
         alunos.forEach(Element => {
             Element.curso.forEach(item => {
                 if(item.sigla.toUpperCase() == curso.toUpperCase()){
-                    alunoArray.push({Icone : Element.foto, Nome : Element.nome, Status : Element.status, Conclusao : item.conclusao});
+                    alunoArray.push({Icone : Element.foto, Nome : Element.nome, Status : Element.status, Conclusao : item.conclusao, Matricula: Element.matricula});
                     erro = false;
                 }
                 listaAlunos.alunos = alunoArray
@@ -718,11 +718,12 @@ const infoAlunos = function(nomeCurso){
 }
 
 
-const infoUmAluno = function(nomeAluno){
-    let aluno = nomeAluno
+const infoUmAluno = function(matricula){
+    let aluno = matricula
     let erro = true;
     let diciplinaAluno = [];
     let disciplinas = {};
+
 
     if(aluno != ''){
         alunos.forEach(itemA =>{
@@ -731,8 +732,8 @@ const infoUmAluno = function(nomeAluno){
                         itemB.disciplinas.forEach(Element => {
                         diciplinaAluno.push({Nome : Element.nome, Nota: Element.media, Status: Element.status});
                         erro = false;
+                        disciplinas.Disciplinas = diciplinaAluno;
                     })
-                    disciplinas.Disciplinas = diciplinaAluno;
                 })
             }
         })
@@ -743,6 +744,8 @@ const infoUmAluno = function(nomeAluno){
         return disciplinas;
     }
 }
+
+infoUmAluno(20151001024)
 
 module.exports = {
     infoAlunos, infoUmAluno
