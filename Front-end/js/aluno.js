@@ -1,5 +1,8 @@
 'use strict'
 
+import { infoAlunos, infoUmAluno } from "./api";
+
+
 const cardAlunos = (object) => {
     let alunos = object;
     let div = document.createElement('div');
