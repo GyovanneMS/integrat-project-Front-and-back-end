@@ -2,24 +2,88 @@
 
 import { infoAlunos, infoUmAluno } from "./api";
 
-
-const cardAlunos = (object) => {
-    let alunos = object;
+/*Div na esquerda, onde fica as informações*/
+const infoAlunos = (object) => {
     let div = document.createElement('div');
-    div.classList.add('infoAluno quadrado')
-    div.innerHTML = `<img src="${alunos.Icone}" alt=""> <p>${alunos.Nome.toUpperCase()}</p>`
+    div.classList.add('infoAluno quadrado');
+    div.innerHTML = `<img src="${object.Icone}" alt=""> <p>${object.Nome.toUpperCase()}</p>`
     return card;
 }
 
-const showCards = async () => {
-    const curso = localStorage.getItem('aluno')
-    console.log(curso)
-    const cards = await infoAlunos(curso);
-    let cardsShow = cards.map(cardAlunos);
-    main.replaceChildren(...cardsShow);
+const showInfoAluno = async () => {
+    const divInfo = document.querySelector('.infoAluno')
+    const infoAluno = localStorage.getItem('aluno')
+    const cards = await infoAlunos(infoAluno);
+    const cardsShow = cards.map(cards);
+    divInfo.appendChildren(...cardsShow);
 }
 
 showCards()
+
+/*Div na direita, onde fica as notas*/
+
+const nota = (valorNota) => {
+    const divNota = document.createElement('div');
+    divNota.innerHTML = ´
+    <div>${valorNota.Nota}</div>
+    <progress value="${valorNota.media}" max=100></progress>
+    <div>${valorNota.Nome}</div>´
+    let class
+    if(valorNota == "Aprovado"){
+        class = 'green'
+    } else if (valorNota == "Exame"){
+        class = 'yellow'
+    } else if (valorNota == "Reprovado"){
+        class = 'red'
+    } else {
+        class = 'blue'
+    }
+    divNota.classList.add(´${class} notas´)
+    
+    return divNota
+    
+}
+
+const notasResult = async () => {
+    const divLocalNotas = document.querySelector('.notas')
+    const divCorNotas = document.createElement('div')
+    divCorNotas.classList.add('color')
+    const alunoMatricula = localStorage.getItem('aluno')
+    const matriculaAluno = await infoUmAluno(alunoMatricula)
+    const mA = matriculaAluno.map(nota)
+    divCorNotas.append(...mA)
+    divLocalNotas(divCorNotas)
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -39,14 +103,26 @@ showCards()
 
 
 /*
+const subjectsSpawner = async () => {
+    const main = document.querySelector('main')
+    const container = document.createElement('div')
+    container.classList.add('subjects')
 
-const infoCreator = (item) => {
-    const card = document.createElement('div')
-    card.innerHTML = `<img src="${item.foto}" class="student-photo"> <span>${item.nome}</span>`
-    card.classList.add('student')
+    const studentRegistration = localStorage.getItem('registration')
 
-    return card
+    const subject = await subjectInfo(studentRegistration)
+
+    const spawner = subject.map(subjectCreator)
+    container.append(...spawner)
+    main.append(container)
 }
+*/
+
+
+
+
+/*
+
 const subjectCreator = (item) => {
     const element = document.createElement('div')
     element.innerHTML = `
@@ -66,6 +142,15 @@ const subjectCreator = (item) => {
     return element
 }
 
+const infoCreator = (item) => {
+    const card = document.createElement('div')
+    card.innerHTML = `<img src="${item.foto}" class="student-photo"> <span>${item.nome}</span>`
+    card.classList.add('student')
+
+    return card
+}
+
+
 const studentSpawnerInfo = async () => {
     const main = document.querySelector('main')
     const studentRegistration = localStorage.getItem('registration')
@@ -76,19 +161,7 @@ const studentSpawnerInfo = async () => {
     main.appendChild(...spawner)
 }
 
-const subjectsSpawner = async () => {
-    const main = document.querySelector('main')
-    const container = document.createElement('div')
-    container.classList.add('subjects')
 
-    const studentRegistration = localStorage.getItem('registration')
-
-    const subject = await subjectInfo(studentRegistration)
-
-    const spawner = subject.map(subjectCreator)
-    container.append(...spawner)
-    main.append(container)
-}
 
 studentSpawnerInfo()
 subjectsSpawner()
