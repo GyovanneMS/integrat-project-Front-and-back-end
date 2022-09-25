@@ -38,7 +38,7 @@ const showCards = async () => {
 
 const abrir = (card) => {
     const nomeAluno = card.currentTarget.id
-    localStorage.setItem('aluno', nomeAluno)
+    localStorage.setItem('aluno', matricula)
 }
 
 
