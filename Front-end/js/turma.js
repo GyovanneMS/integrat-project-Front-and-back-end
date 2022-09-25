@@ -16,10 +16,10 @@ const cardAlunos = (object) => {
     card.setAttribute("id", `${alunos.Matricula} ${alunos.Conclusao} `)
     if(alunos.Status == "Cursando"){
         card.classList.add('cursando');
-        card.setAttribute("id", "cursando")
+        //card.setAttribute("id", "cursando")
     } else if(alunos.Status == "Finalizado"){
         card.classList.add('finalizado');
-        card.setAttribute("id", "finalizado")
+       // card.setAttribute("id", "finalizado")
     } else {
         card.classList.add('sem-informacao')
     } 
