@@ -15,7 +15,7 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 
 const { iconeSigla } = require("./modulos/infoCurso.js");
-const { infoAlunos, infoUmAluno } = require("./modulos/infoAlunos.js");
+const { infoAlunos, infoUmAluno, informationMatricula, statusAluno } = require("./modulos/infoAlunos.js");
 
 const app = express();
 
@@ -59,9 +59,9 @@ app.get('/alunos/:curso', cors(), async function(request, response, next){
     }
 })
 
-app.get('/disciplinas/:aluno', cors(), async function(request, response, next){
+app.get('/disciplinas/:matricula', cors(), async function(request, response, next){
     //recebe a sigla enviada por parametro no endpoint
-    let aluno = request.params.aluno;
+    let aluno = request.params.matricula;
     //let curso = 'DS'
     let disciplinas = infoUmAluno(aluno);
 
@@ -73,6 +73,36 @@ app.get('/disciplinas/:aluno', cors(), async function(request, response, next){
     }
 })
 
+app.get('/informacoes/:matricula', cors(), async function(request, response, next){
+    //recebe a sigla enviada por parametro no endpoint
+    let aluno = request.params.matricula;
+    
+    //let curso = 'DS'
+    let informacoes = informationMatricula(aluno);
+    
+    if(informacoes){
+        response.status(200);
+        response.json(informacoes);
+    } else{
+        response.status(404);
+    }
+})
+
+app.get('/status/:sigla', cors(), async function(request, response, next){
+    //recebe a sigla enviada por parametro no endpoint
+    let sigla = request.params.sigla;
+    let status = request.query.status;
+    
+    //let curso = 'DS'
+    let alunosStatus = statusAluno(sigla, status);
+    
+    if(alunosStatus){
+        response.status(200);
+        response.json(alunosStatus);
+    } else{
+        response.status(404);
+    }
+})
 
 //Para que os EndPoints possam estar funcionando, precisamos obrigatoriamente finalizar a API nessa  function, que representa o start da API
 app.listen(8080, function(){

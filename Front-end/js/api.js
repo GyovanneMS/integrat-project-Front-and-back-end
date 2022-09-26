@@ -30,6 +30,17 @@ const infoUmAluno = async (nomeAluno) => {
     return listaDisciplinas.Disciplinas;
 }
 
+const infoUmAlunoMatricula = async (nomeAluno) => {
+    const aluno = `http://localhost:8080/informacoes/${nomeAluno}`
+
+    const response = await fetch(aluno);
+
+    const informacoes = await response.json();
+
+    return informacoes.Informacoes;
+}
+
+
 export {
-    infoCursos, infoAlunos, infoUmAluno
+    infoCursos, infoAlunos, infoUmAluno, infoUmAlunoMatricula
 } 

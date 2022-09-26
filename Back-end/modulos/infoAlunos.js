@@ -717,6 +717,32 @@ const infoAlunos = function(nomeCurso){
     }
 }
 
+const statusAluno = function(nomeCurso, qualStatus){
+    let curso = nomeCurso;
+    let status = qualStatus;
+    let erro = true;
+    let listaAlunos = {};
+    let alunosArray = [];
+    console.log('1')
+
+
+    if(curso != '' && status != ''){
+        let arrayAlunos = infoAlunos(curso);
+        arrayAlunos.forEach(array =>{
+            if(array.Status.toUpperCase() == status.toUpperCase()){
+                alunosArray.push({Icone : array.foto, Nome : array.nome, Status : array.status, Conclusao : array.conclusao, Matricula: array.matricula})
+            }
+        });
+    }
+
+    if(erro){
+        return false;
+    } else {
+        console.log('6')
+        return listaAlunos;
+    }
+}
+
 
 const infoUmAluno = function(matricula){
     let aluno = matricula
@@ -745,8 +771,29 @@ const infoUmAluno = function(matricula){
     }
 }
 
-infoUmAluno(20151001024)
+
+const informationMatricula = function(matricula){
+    let aluno = matricula;
+    let erro = true;
+    let infoDoAluno = [];
+    let infoJson = {};
+
+    if(aluno != ''){
+        alunos.forEach(itemA => {
+            if(itemA.matricula == aluno){
+                infoDoAluno.push({Icone : itemA.foto, Nome : itemA.nome});
+                erro = false;
+                infoJson.Informacoes = infoDoAluno; 
+            }
+        })
+    }
+    if(erro){
+        return false;
+    } else {
+        return infoJson;
+    }
+}
 
 module.exports = {
-    infoAlunos, infoUmAluno
+    infoAlunos, infoUmAluno, informationMatricula, statusAluno
 }

@@ -13,32 +13,115 @@ main{
 
 .quadrado{
     width: 700px;
-    height: 700px;
+    min-height: 700px;
+    box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.25);
+    font-family: 'Poppins';
+    font-style: normal;
+    line-height: 27px;
 }
 
 .infoAluno{
-    box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.25);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 50px;
     color: #3347B0;
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    font-family: 'Poppins';
-    font-style: normal;
+    text-align: center;
     font-weight: 500;
-    font-size: 18px;
-    line-height: 27px;
+    font-size: 2rem;
+
 }
 
 .notas{
     background: #FFFFFF;
-    box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.25);
-
-    font-family: 'Poppins';
-    font-style: normal;
     font-weight: 700;
-    font-size: 18px;    
-    line-height: 27px;  
+    font-size: 18px; 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+progress{
+    border-radius: 15px;
+    transform: rotate(-90deg);
+    height: 100px;
+}
+
+.nota{
+    height: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 80px;
+}
+
+.nivelNota{
+    height: 16px;
+}
+
+.nota .nivelNota{
+    display: flex;
+    align-items: center;
+    background-color: aqua;
+}
+
+.nota progress::-webkit-progress-bar{
+    background-color: #EEEFF8;
+    height: 16px;
+}
+
+.color{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    gap: 10px;
+}
+
+.blue progress::-webkit-progress-value{
+    background-color: #3347B0;
+    border-radius: 4px;
+    box-shadow: 0px 0px 24px #3347B0;
+}
+
+.blue .nota{
+    color: #3347B0;
+}
+
+.yellow progress::-webkit-progress-value{
+    background-color: #E5B657;
+    border-radius: 4px;
+    box-shadow: 0px 0px 24px #E5B657;
+}
+
+.yellow .nota{
+    color: #E5B657;
+}
+
+.red progress::-webkit-progress-value{
+    background-color: #C11010;
+    border-radius: 4px;
+    box-shadow: 0px 0px 24px #C11010;
+}
+
+.red .nota{
+    color: #C11010;
+}
+
+.green progress::-webkit-progress-value{
+    background-color: greenyellow;
+    border-radius: 4px;
+    box-shadow: 0px 0px 24px greenyellow;
+}
+
+.green .nota{
+    color: greenyellow;
+}
+
+
+.red .valorNota{
+    color: #C11010;
 }

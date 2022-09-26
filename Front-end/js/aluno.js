@@ -1,22 +1,63 @@
 'use strict'
 
-import { infoAlunos, infoUmAluno } from "./api";
+//import { infoUmAluno } from "./api";
+import { infoUmAlunoMatricula, infoUmAluno } from "./api.js";
 
-
-const cardAlunos = (object) => {
-    let alunos = object;
+/*Div na esquerda, onde fica as informações*/
+const infoAlunoInfo = (object) => {
     let div = document.createElement('div');
-    div.classList.add('infoAluno quadrado')
-    div.innerHTML = `<img src="${alunos.Icone}" alt=""> <p>${alunos.Nome.toUpperCase()}</p>`
-    return card;
+    div.classList.add('informationsAluno');
+    div.innerHTML = `<img src="${object.Icone}" alt=""> <p>${object.Nome}</p>`
+    return div;
 }
 
-const showCards = async () => {
-    const curso = localStorage.getItem('aluno')
-    console.log(curso)
-    const cards = await infoAlunos(curso);
-    let cardsShow = cards.map(cardAlunos);
-    main.replaceChildren(...cardsShow);
+const showInfoAluno = async () => {
+    const divInfo = document.querySelector('.infoAluno')
+    const infoAluno = localStorage.getItem('aluno');
+    const matriculaId = await infoUmAlunoMatricula(infoAluno)
+    const cardsShow = matriculaId.map(infoAlunoInfo);
+    divInfo.append(...cardsShow);
+}
+showInfoAluno()
+
+/*Div na direita, onde fica as notas*/
+
+
+const nota = (valorNota) => {
+    let divNota = document.createElement('div');
+    let classe
+    if(valorNota.Status == "Aprovado"){
+        classe = 'blue'
+    } else if (valorNota.Status == "Exame"){
+        classe = 'yellow'
+    } else if (valorNota.Status == "Reprovado"){
+        classe = 'red'
+    } else {
+        classe = 'green'
+    }
+    
+    divNota.classList.add("nota")
+
+    divNota.innerHTML = `
+    <div class='valorNota'>${valorNota.Nota}</div>
+    <progress value="${valorNota.Nota}" class="${classe} nivelNota" max=100></progress>
+    <div class='valorNota'>${valorNota.Nome}</div>`
+    
+    return divNota
+    
 }
 
-showCards()
+const notasResult = async () => {
+    const divLocalNotas = document.querySelector('.notas')
+    const divCorNotas = document.createElement('div')
+    divCorNotas.classList.add('color')
+    const alunoMatricula = localStorage.getItem('aluno')
+    const matriculaAluno = await infoUmAluno(alunoMatricula)
+    const mA = matriculaAluno.map(nota)
+    divCorNotas.append(...mA)
+    console.log(divCorNotas.appendChild(...mA), "Olá")
+    divLocalNotas.append(divCorNotas)
+    console.log(divLocalNotas.append(divCorNotas), "Thau")
+}
+
+notasResult()

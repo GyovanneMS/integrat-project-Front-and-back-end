@@ -13,15 +13,14 @@ const cardAlunos = (object) => {
     let alunos = object;
     let card = document.createElement('a');
     card.classList.add(`alunos`);
-    card.setAttribute("id", `${alunos.Matricula} ${alunos.Conclusao} `)
+    //Id
+    card.setAttribute('id', `${alunos.Matricula}`)
     if(alunos.Status == "Cursando"){
         card.classList.add('cursando');
-        card.setAttribute("id", "cursando")
     } else if(alunos.Status == "Finalizado"){
         card.classList.add('finalizado');
-        card.setAttribute("id", "finalizado")
     } else {
-        card.classList.add('sem-informacao')
+        card.classList.add('sem-informacao') 
     } 
     card.href = './aluno.html'
     card.innerHTML = `<img src="${alunos.Icone}" alt=""> <p>${alunos.Nome.toUpperCase()}</p>`
