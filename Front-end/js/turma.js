@@ -26,8 +26,15 @@ const cardAlunos = (object) => {
     card.setAttribute('id', `${alunos.Matricula}`)
     if(alunos.Status == "Cursando"){
         card.classList.add('cursando');
+<<<<<<< HEAD
     } else if(alunos.Status == "Finalizado"){
         card.classList.add('finalizado');
+=======
+        //card.setAttribute("id", "cursando")
+    } else if(alunos.Status == "Finalizado"){
+        card.classList.add('finalizado');
+       // card.setAttribute("id", "finalizado")
+>>>>>>> 5e8cf6e89026b9c9c21286cb0a6e616b0ad4155d
     } else {
         card.classList.add('sem-informacao') 
     } 
@@ -46,7 +53,7 @@ const showCards = async () => {
 
 const abrir = (card) => {
     const nomeAluno = card.currentTarget.id
-    localStorage.setItem('aluno', nomeAluno)
+    localStorage.setItem('aluno', matricula)
 }
 
 document.getElementById('status-dos-alunos').addEventListener('change', filtro)

@@ -39,7 +39,9 @@ const nota = (valorNota) => {
     <div class='valorNota'>${valorNota.Nota}</div>
     <progress value="${valorNota.Nota}" class="${classe} nivelNota" max=100></progress>
     <div class='valorNota'>${valorNota.Nome}</div>`
+    
     return divNota
+    
 }
 
 const notasResult = async () => {
