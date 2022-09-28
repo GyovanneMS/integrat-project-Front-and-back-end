@@ -15,7 +15,7 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 
 const { iconeSigla } = require("./modulos/infoCurso.js");
-const { infoAlunos, infoUmAluno, informationMatricula, statusAluno } = require("./modulos/infoAlunos.js");
+const { infoAlunos, infoUmAluno, informationMatricula } = require("./modulos/infoAlunos.js");
 
 const app = express();
 
@@ -48,8 +48,9 @@ app.get('/informacoesDosCursos', cors(), async function(request, response, next)
 app.get('/alunos/:curso', cors(), async function(request, response, next){
     //recebe a sigla enviada por parametro no endpoint
     let curso = request.params.curso;
+    let status = request.query.status;
     //let curso = 'DS'
-    let alunos = infoAlunos(curso);
+    let alunos = infoAlunos(curso, status);
 
     if(alunos){
         response.status(200);

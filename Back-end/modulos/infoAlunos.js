@@ -692,57 +692,44 @@ var alunos = [
         }
 ];
 
-const infoAlunos = function(nomeCurso){
+const infoAlunos = function(nomeCurso, qualStatus){
+    let status = qualStatus;
     let curso = nomeCurso;
     let erro = true;
     let listaAlunos = {}
     let alunoArray = []
-
-    if(curso != ''){
+    if(status != undefined && status.toLowerCase() != 'default' && status != ''){
         alunos.forEach(Element => {
             Element.curso.forEach(item => {
+            if(item.sigla.toUpperCase() == curso.toUpperCase()){
+                
+                if(Element.status.toUpperCase() == status.toUpperCase()){
+                    alunoArray.push({Icone : Element.foto, Nome : Element.nome, Status : Element.status, Conclusao : item.conclusao, Matricula: Element.matricula});
+                    erro = false;
+                }
+            }
+                listaAlunos.alunos = alunoArray
+            })
+        });
+    } else if(curso != ''){
+        if(curso != ''){
+            alunos.forEach(Element => {
+                Element.curso.forEach(item => {
                 if(item.sigla.toUpperCase() == curso.toUpperCase()){
                     alunoArray.push({Icone : Element.foto, Nome : Element.nome, Status : Element.status, Conclusao : item.conclusao, Matricula: Element.matricula});
                     erro = false;
                 }
-                listaAlunos.alunos = alunoArray
-            })
-        });
+                    listaAlunos.alunos = alunoArray
+                })
+            });
+        }
     }
-
     if(erro){
         return false;
     } else {
         return listaAlunos;
     }
 }
-
-const statusAluno = function(nomeCurso, qualStatus){
-    let curso = nomeCurso;
-    let status = qualStatus;
-    let erro = true;
-    let listaAlunos = {};
-    let alunosArray = [];
-    console.log('1')
-
-
-    if(curso != '' && status != ''){
-        let arrayAlunos = infoAlunos(curso);
-        arrayAlunos.forEach(array =>{
-            if(array.Status.toUpperCase() == status.toUpperCase()){
-                alunosArray.push({Icone : array.foto, Nome : array.nome, Status : array.status, Conclusao : array.conclusao, Matricula: array.matricula})
-            }
-        });
-    }
-
-    if(erro){
-        return false;
-    } else {
-        console.log('6')
-        return listaAlunos;
-    }
-}
-
 
 const infoUmAluno = function(matricula){
     let aluno = matricula
@@ -795,5 +782,5 @@ const informationMatricula = function(matricula){
 }
 
 module.exports = {
-    infoAlunos, infoUmAluno, informationMatricula, statusAluno
+    infoAlunos, infoUmAluno, informationMatricula
 }

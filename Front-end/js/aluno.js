@@ -32,19 +32,14 @@ const nota = (valorNota) => {
         classe = 'yellow'
     } else if (valorNota.Status == "Reprovado"){
         classe = 'red'
-    } else {
-        classe = 'green'
-    }
+    } 
     
     divNota.classList.add("nota")
-
     divNota.innerHTML = `
     <div class='valorNota'>${valorNota.Nota}</div>
     <progress value="${valorNota.Nota}" class="${classe} nivelNota" max=100></progress>
     <div class='valorNota'>${valorNota.Nome}</div>`
-    
     return divNota
-    
 }
 
 const notasResult = async () => {
@@ -55,9 +50,7 @@ const notasResult = async () => {
     const matriculaAluno = await infoUmAluno(alunoMatricula)
     const mA = matriculaAluno.map(nota)
     divCorNotas.append(...mA)
-    console.log(divCorNotas.appendChild(...mA), "Olá")
     divLocalNotas.append(divCorNotas)
-    console.log(divLocalNotas.append(divCorNotas), "Thau")
 }
 
 notasResult()

@@ -63,15 +63,17 @@ progress{
     height: 16px;
 }
 
-.nota .nivelNota{
-    display: flex;
-    align-items: center;
-    background-color: aqua;
+.nota::-webkit-progress-value{
+    background-color: black;
 }
 
 .nota progress::-webkit-progress-bar{
     background-color: #EEEFF8;
     height: 16px;
+}
+
+.blue progress::-webkit-progress-value{
+    background-color:white;
 }
 
 .color{
@@ -81,47 +83,3 @@ progress{
     gap: 10px;
 }
 
-.blue progress::-webkit-progress-value{
-    background-color: #3347B0;
-    border-radius: 4px;
-    box-shadow: 0px 0px 24px #3347B0;
-}
-
-.blue .nota{
-    color: #3347B0;
-}
-
-.yellow progress::-webkit-progress-value{
-    background-color: #E5B657;
-    border-radius: 4px;
-    box-shadow: 0px 0px 24px #E5B657;
-}
-
-.yellow .nota{
-    color: #E5B657;
-}
-
-.red progress::-webkit-progress-value{
-    background-color: #C11010;
-    border-radius: 4px;
-    box-shadow: 0px 0px 24px #C11010;
-}
-
-.red .nota{
-    color: #C11010;
-}
-
-.green progress::-webkit-progress-value{
-    background-color: greenyellow;
-    border-radius: 4px;
-    box-shadow: 0px 0px 24px greenyellow;
-}
-
-.green .nota{
-    color: greenyellow;
-}
-
-
-.red .valorNota{
-    color: #C11010;
-}

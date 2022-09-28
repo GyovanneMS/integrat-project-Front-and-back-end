@@ -10,13 +10,16 @@ const infoCursos = async () => {
     return listaCursos.curso
 }
 
-const infoAlunos = async (nomeCurso) => {
-    const alunos = `http://localhost:8080/alunos/${nomeCurso}`
+const infoAlunos = async (nomeCurso, status) => {
+    if(status == '' || status == undefined){
+        status = 'default';
+    }
+    const alunos = `http://localhost:8080/alunos/${nomeCurso}/?status=${status}`
 
     const response = await fetch(alunos);
 
     const listaAlunos = await response.json();
-
+    
     return listaAlunos.alunos;
 }
 

@@ -9,6 +9,15 @@ const titulo = async () => {
     titulo.innerHTML = `${localStorage.getItem('registration')}`
 }
 
+const filtro = async () => {
+    let status = document.getElementById('status-dos-alunos').value
+    let curso = localStorage.getItem('registration')
+    let cards = await infoAlunos(curso, status)
+    let cardsShow = cards.map(cardAlunos);
+    alunos.replaceChildren(...cardsShow);
+}
+
+
 const cardAlunos = (object) => {
     let alunos = object;
     let card = document.createElement('a');
@@ -29,8 +38,8 @@ const cardAlunos = (object) => {
 }
 
 const showCards = async () => {
-    const curso = localStorage.getItem('registration')
-    const cards = await infoAlunos(curso);
+    let curso = localStorage.getItem('registration')
+    let cards = await infoAlunos(curso);
     let cardsShow = cards.map(cardAlunos);
     alunos.replaceChildren(...cardsShow);
 }
@@ -40,7 +49,7 @@ const abrir = (card) => {
     localStorage.setItem('aluno', nomeAluno)
 }
 
-
+document.getElementById('status-dos-alunos').addEventListener('change', filtro)
 showCards()
 titulo()
 
