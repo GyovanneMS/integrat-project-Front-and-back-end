@@ -28,13 +28,35 @@ const iconeSigla = function(){
     let infoJson = {};
         //Percorre o array até achar a sigla ou o nome da matéria
         cursos.forEach(ListaCurso => {
-            infoArray.push({Icone : ListaCurso.icone, Sigla : ListaCurso.sigla});
+            infoArray.push({Icone : ListaCurso.icone, Sigla : ListaCurso.sigla, Nome: ListaCurso.nome});
             infoJson.curso = infoArray;
         })
     return infoJson;
 }
 
+const nomeCurso = function(siglaCurso){
+    let sigla = siglaCurso;
+    let siglaArray = [];
+    let siglaJson = {}
+    let erro = true;
+    if(sigla != ''){
+        cursos.forEach(curso => {
+            if(sigla.toUpperCase() == curso.sigla.toUpperCase()){
+                siglaArray.push({Nome : curso.nome});
+                siglaJson.Nome = siglaArray;
+                erro = false
+            }
+        })
+    }
+    if(erro){
+        return false;
+    } else{
+        return siglaJson
+    }
+}
+
+
 
 module.exports = {
-    iconeSigla
+    iconeSigla, nomeCurso
 }

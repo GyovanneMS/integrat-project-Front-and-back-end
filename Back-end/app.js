@@ -14,7 +14,7 @@ const cors = require("cors");
 //import da bibliotexa do body-parser que irá manipular o corpo das requisições do protocolo HTTP
 const bodyParser = require("body-parser");
 
-const { iconeSigla } = require("./modulos/infoCurso.js");
+const { iconeSigla, nomeCurso } = require("./modulos/infoCurso.js");
 const { infoAlunos, infoUmAluno, informationMatricula } = require("./modulos/infoAlunos.js");
 
 const app = express();
@@ -44,6 +44,20 @@ app.get('/informacoesDosCursos', cors(), async function(request, response, next)
     }
 
 })//Fazer o teste no Postman
+
+app.get('/nome/:sigla', cors(), async function(request, response, next){
+    //recebe a sigla enviada por parametro no endpoint
+    let sigla = request.params.sigla;
+    //let curso = 'DS'
+    let nome = nomeCurso(sigla);
+
+    if(nome){
+        response.status(200);
+        response.json(nome);
+    } else{
+        response.status(404);
+    }
+})
 
 app.get('/alunos/:curso', cors(), async function(request, response, next){
     //recebe a sigla enviada por parametro no endpoint
