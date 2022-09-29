@@ -10,6 +10,16 @@ const infoCursos = async () => {
     return listaCursos.curso
 }
 
+const nomeCurso = async (sigla) => {
+    const nome = `http://localhost:8080/nome/${sigla}`
+ 
+    const response = await fetch(nome);
+    
+    const apenasONome = await response.json();
+
+    return apenasONome
+}
+
 const infoAlunos = async (nomeCurso, status) => {
     if(status == '' || status == undefined){
         status = 'default';
@@ -45,5 +55,5 @@ const infoUmAlunoMatricula = async (nomeAluno) => {
 
 
 export {
-    infoCursos, infoAlunos, infoUmAluno, infoUmAlunoMatricula
+    infoCursos, infoAlunos, infoUmAluno, infoUmAlunoMatricula, nomeCurso
 } 

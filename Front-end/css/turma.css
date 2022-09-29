@@ -44,7 +44,9 @@ main{
 }
 
 h1{
+    height: 30%;
     color: #3347B0;
+    margin-top: 20px;
 }
 
 .todosAlunos{
@@ -73,6 +75,7 @@ h1{
     align-items: center;
     color: white;
     flex-wrap: wrap;
+    box-shadow: 8px 8px 12px rgba(0, 0, 0, 0.25);
 }
 
 .cursando{

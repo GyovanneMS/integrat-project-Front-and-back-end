@@ -34,10 +34,11 @@ const nota = (valorNota) => {
         classe = 'red'
     } 
     
-    divNota.classList.add("nota")
+    divNota.classList.add(`${classe}`)
+    divNota.classList.add('nota')
     divNota.innerHTML = `
-    <div class='valorNota'>${valorNota.Nota}</div>
-    <progress value="${valorNota.Nota}" class="${classe} nivelNota" max=100></progress>
+    <div class='valorNota numeroNota'>${valorNota.Nota}</div>
+    <progress value="${valorNota.Nota}" nivelNota" max=100></progress>
     <div class='valorNota'>${valorNota.Nome}</div>`
     
     return divNota

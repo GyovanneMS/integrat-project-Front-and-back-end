@@ -1,12 +1,22 @@
 'use strict'
 
-import { infoAlunos } from './api.js'
+import { infoAlunos, infoCursos, nomeCurso } from './api.js'
 //import { criarAlunos } from './app.js'
 
 const titulo = async () => {
-    const titulo = document.getElementsByClassName('h1')
-    
-    titulo.innerHTML = `${localStorage.getItem('registration')}`
+    //const titulo = document.getElementsByClassName('h1');
+    let curso = localStorage.getItem('registration');
+    let cursoNome = await nomeCurso(curso)
+    let title = cursoNome.Nome[0].Nome
+    //console.log(cursoNome.split(' - '))
+    //titulo.innerHTML = `a${title}a`;
+    //titulo.append(title)
+    document.getElementById('titulo-da-pagina').textContent = cortarTitulo(title)
+}
+
+const cortarTitulo = (titulo) => {
+    const textoCerto = titulo.split(' em ');
+    return textoCerto[1]
 }
 
 const filtro = async () => {
@@ -17,7 +27,6 @@ const filtro = async () => {
     alunos.replaceChildren(...cardsShow);
 }
 
-
 const cardAlunos = (object) => {
     let alunos = object;
     let card = document.createElement('a');
@@ -26,15 +35,12 @@ const cardAlunos = (object) => {
     card.setAttribute('id', `${alunos.Matricula}`)
     if(alunos.Status == "Cursando"){
         card.classList.add('cursando');
-<<<<<<< HEAD
     } else if(alunos.Status == "Finalizado"){
         card.classList.add('finalizado');
-=======
         //card.setAttribute("id", "cursando")
     } else if(alunos.Status == "Finalizado"){
         card.classList.add('finalizado');
        // card.setAttribute("id", "finalizado")
->>>>>>> 5e8cf6e89026b9c9c21286cb0a6e616b0ad4155d
     } else {
         card.classList.add('sem-informacao') 
     } 
@@ -52,7 +58,7 @@ const showCards = async () => {
 }
 
 const abrir = (card) => {
-    const nomeAluno = card.currentTarget.id
+    const matricula = card.currentTarget.id
     localStorage.setItem('aluno', matricula)
 }
 
