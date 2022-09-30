@@ -12,10 +12,10 @@ const infoAlunoInfo = (object) => {
 }
 
 const showInfoAluno = async () => {
-    const divInfo = document.querySelector('.infoAluno')
-    const infoAluno = localStorage.getItem('aluno');
-    const matriculaId = await infoUmAlunoMatricula(infoAluno)
-    const cardsShow = matriculaId.map(infoAlunoInfo);
+    let divInfo = document.querySelector('.infoAluno')
+    let infoAluno = localStorage.getItem('aluno');
+    let matriculaId = await infoUmAlunoMatricula(infoAluno)
+    let cardsShow = matriculaId.map(infoAlunoInfo);
     divInfo.append(...cardsShow);
 }
 showInfoAluno()
@@ -46,12 +46,12 @@ const nota = (valorNota) => {
 }
 
 const notasResult = async () => {
-    const divLocalNotas = document.querySelector('.notas')
-    const divCorNotas = document.createElement('div')
+    let divLocalNotas = document.querySelector('.notas')
+    let divCorNotas = document.createElement('div')
     divCorNotas.classList.add('color')
-    const alunoMatricula = localStorage.getItem('aluno')
-    const matriculaAluno = await infoUmAluno(alunoMatricula)
-    const mA = matriculaAluno.map(nota)
+    let alunoMatricula = localStorage.getItem('aluno')
+    let matriculaAluno = await infoUmAluno(alunoMatricula)
+    let mA = matriculaAluno.map(nota)
     divCorNotas.append(...mA)
     divLocalNotas.append(divCorNotas)
 }

@@ -5,7 +5,7 @@ import { infoAlunos, infoCursos, nomeCurso } from './api.js'
 
 const titulo = async () => {
     //const titulo = document.getElementsByClassName('h1');
-    let curso = localStorage.getItem('registration');
+    let curso = localStorage.getItem('nomeCurso');
     let cursoNome = await nomeCurso(curso)
     let title = cursoNome.Nome[0].Nome
     //console.log(cursoNome.split(' - '))
@@ -21,13 +21,14 @@ const cortarTitulo = (titulo) => {
 
 const filtro = async () => {
     let status = document.getElementById('status-dos-alunos').value
-    let curso = localStorage.getItem('registration')
+    let curso = localStorage.getItem('nomeCurso')
     let cards = await infoAlunos(curso, status)
     let cardsShow = cards.map(cardAlunos);
     alunos.replaceChildren(...cardsShow);
 }
 
 const cardAlunos = (object) => {
+    console.log(localStorage.getItem('nomeCurso'))
     let alunos = object;
     let card = document.createElement('a');
     card.classList.add(`alunos`);
@@ -51,7 +52,7 @@ const cardAlunos = (object) => {
 }
 
 const showCards = async () => {
-    let curso = localStorage.getItem('registration')
+    let curso = localStorage.getItem('nomeCurso')
     let cards = await infoAlunos(curso);
     let cardsShow = cards.map(cardAlunos);
     alunos.replaceChildren(...cardsShow);

@@ -16,7 +16,8 @@ main{
 .title{
     display: flex;
     flex-direction: column;
-    text-align: left;
+    justify-content: center;
+    align-items: center;
 }
 
 h1{
@@ -26,10 +27,11 @@ h1{
     font-size: 57.38px;
     word-break: break-word;
     padding-bottom: 90px;
+    text-align: center;
 }
 
 .main-img{
-    height: 250px;
+    height: 400px;
 }
 
 .studant{
@@ -40,7 +42,6 @@ mark{
     background-color: white;
     color: #3347B0;
     font-weight: 700;
-    padding-right: 200px;
 }
 
 .cursos{
@@ -64,9 +65,80 @@ mark{
     color: white;
     gap: 20px;
     border: 1px solid #000000;
-    box-shadow:  12px 12px 4px rgba(51, 71, 176, 0.5);;
+    transition: 2.5s;
+}
+
+.card:hover{
+    box-shadow:  12px 12px 4px rgba(51, 71, 176, 0.5);
 }
 
 .card img{
     height: 60%;
+}
+
+@media (max-width: 670px) {
+
+    main{
+        padding: 5px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .fixed{
+        padding-top: 10px;
+        display: flex;
+        align-items: center;
+    }
+
+    .fixed, .cursos{
+        width: 90%;
+        height: 50%;
+    }
+
+    .main-img{
+        width: 170px;
+        height: 130px;
+    }
+
+    h1{
+        font-size: 1.4rem;
+        display: flex;
+        text-align: center;
+        justify-content: center;
+        word-break: none;
+        flex-wrap: wrap;
+        padding-left: 0px;
+        padding-bottom: 0px;
+    }
+
+    .title{
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        align-items: center;
+    }
+
+    mark{
+        margin: 0px 3px;
+    }
+
+    .studant{
+        height: 200px;
+    }
+
+    .cursos{
+        height: 30px;
+    }
+
+    .card{
+        width: 200px;
+        height: 100px;
+        font-size: 3rem;
+        transition: 2.5s;
+        box-shadow:  12px 12px 4px rgba(51, 71, 176, 0.5);
+    }
+
+    .card img{
+        height: 60%
+    }
 }

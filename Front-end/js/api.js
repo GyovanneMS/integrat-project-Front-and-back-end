@@ -44,6 +44,7 @@ const infoUmAluno = async (nomeAluno) => {
 }
 
 const infoUmAlunoMatricula = async (nomeAluno) => {
+    
     const aluno = `http://localhost:8080/informacoes/${nomeAluno}`
 
     const response = await fetch(aluno);
